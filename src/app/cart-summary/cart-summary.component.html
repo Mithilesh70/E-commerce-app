@@ -1,0 +1,18 @@
+<div class="float end">
+  <small>
+    Your Cart:
+    <span *ngIf="cart.itemCount > 0">
+      {{ cart.itemCount }} item(s)
+      {{ cart.cartPrice | currency: "INR":"symbol":"2.2-2" }}
+    </span>
+    <span *ngIf="cart.itemCount == 0"> (EMPTY) </span>
+  </small>
+
+  <button
+    class="btn-sm bg-dark text-white"
+    [disabled]="cart.itemCount == 0"
+    routerLink="/cart"
+  >
+    <i class="fa fa-shopping-cart"></i>
+  </button>
+</div>

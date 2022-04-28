@@ -1,0 +1,90 @@
+<div class="container-fluid">
+  <!-- <div class="row">
+    <div class="col bg-danger text-white">
+      <a class="navbar-brand text-white">Online Store</a>
+    </div>
+  </div> -->
+  <div class="row text-white">
+    <div class="col-3 bg-info p-2">
+      <div class="d-grid gap-2">
+        <!-- Home -->
+        <button class="btn btn-outline-primary" (click)="changeCategory()">
+          HOME
+        </button>
+
+        <!-- Categories -->
+        <button
+          *ngFor="let cat of categories"
+          class="btn btn-outline-primary"
+          [class.active]="cat == selectedCategory"
+          (click)="changeCategory(cat)"
+        >
+          {{ cat }}
+        </button>
+
+        <!-- Admin Button -->
+        <button class="btn btn-block btn-danger m-t-3" routerLink="/admin">
+          Admin
+        </button>
+      </div>
+    </div>
+    <div class="col-9" id="products">
+      <div class="card m-1 p-1 bg-dark" *ngFor="let product of products">
+        <h2>
+          {{ product.name }}
+          <span class="badge rounded-pill bg-light text-dark" id="price">
+            {{ product.price | currency: "INR":"symbol":"2.2-2" }}
+          </span>
+        </h2>
+        <div class="card-text bg-dark p-1">
+          {{ product.description }}
+
+          <button
+            class="btn btn-success btn-sm float-end"
+            (click)="addProductToCart(product)"
+          >
+            Add to Cart
+          </button>
+        </div>
+      </div>
+      <div class="form-inline mr-1" id="pageSelect">
+        <select
+          class="form-control"
+          [value]="productsPerPage"
+          (change)="changePageSize($any($event.target).value)"
+        >
+          <option value="4">Four</option>
+          <option value="6">Six</option>
+          <option value="8">Eight</option>
+        </select>
+      </div>
+      <div class="btn-group" id="pagination">
+        <button
+          *ngFor="let page of pageNumber"
+          (click)="changePage(page)"
+          class="btn btn-outline-dark"
+          [class.active]="page == selectedPage"
+        >
+          {{ page }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="container">
+  <section>
+    <div class="example-label">Basic</div>
+    <div class="example-button-row">
+      <button mat-button>Basic</button>
+      <button mat-button color="primary">Primary</button>
+      <button mat-button color="accent">Accent</button>
+      <button mat-button color="warn">Warn</button>
+      <button mat-button disabled>Disabled</button>
+      <a mat-button href="https://www.google.com/" target="_blank">Link</a>
+    </div>
+  </section>
+  <mat-slider min="1" max="100" step="1" value="50"></mat-slider>
+  <i class="material-icons">shopping_cart</i>
+</div>
+<img src="../../assets/undraw_sunlight_re_0usx.svg" alt="" /> -->
